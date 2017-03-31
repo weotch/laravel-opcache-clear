@@ -46,7 +46,7 @@ class OpcacheClearCommand extends Command
         $encryptedToken = Crypt::encrypt($originalToken);
 
         $response = json_decode(
-            $client->request('GET', '/opcache-clear', ['query' => ['token' => $encryptedToken]])->getBody(), true
+            $client->request('GET', 'opcache-clear', ['query' => ['token' => $encryptedToken]])->getBody(), true
         );
 
         if(($response['result']))
