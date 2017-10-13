@@ -39,6 +39,10 @@ class OpcacheClearCommand extends Command
      */
     public function handle()
     {
+        if (!function_exists('opcache_reset')) {
+            return $this->line('Opcache not installed');   
+        }
+        
         $client = new Client(['base_uri' => config('app.url', 'http://localhost')]);
         
         $originalToken = config('app.key');
